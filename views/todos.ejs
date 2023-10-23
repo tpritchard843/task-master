@@ -9,14 +9,16 @@
 </head>
 <body>
     <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
+    <main id="main">
+        <ul class="todos-list" id="todosList">
+            <% todos.forEach( el => { %>
+                    <li class='todoItem' data-id='<%=el._id%>'>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><input type="checkbox" data-completed='<%=el._id%>'><%= el.todo %></span>
+                        <span class='del'> Delete </span>
+                    </li>
+            <% }) %>
+            </ul>
+    </main>
 
     <h2><%= user.userName %> has <%= left %> things left to do.</h2>
 
