@@ -18,6 +18,7 @@ module.exports = {
                 completed: false,
                 userId: req.user.id,
                 dateCreated: Date(),
+                dateCompleted: null
             })
             console.log('Todo has been added!')
             res.redirect('/todos')
@@ -29,7 +30,7 @@ module.exports = {
         try{
             await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
                 completed: true,
-                $setOnInsert: { dateCompleted: Date() }
+                dateCompleted: Date()
             })
             console.log('Marked Complete')
             res.json('Marked Complete')
@@ -41,7 +42,7 @@ module.exports = {
         try{
             await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
                 completed: false,
-                $setOnInsert: { dateCompleted: null }
+                dateCompleted: null
             })
             console.log('Marked Incomplete')
             res.json('Marked Incomplete')
